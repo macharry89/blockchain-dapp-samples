@@ -25,6 +25,8 @@ jobs:
       # Checkout the code as the first step.
       - checkout
 
+      - run: cd ~/ && ls
+      
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
