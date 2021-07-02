@@ -18,14 +18,14 @@ jobs:
     docker:
       - image: cimg/node:15.1
 
-    working_directory: ~/blockchain-dapp-samples/ERC721/color-token/frontend/
+    working_directory: ~/blockchain-dapp-samples
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
       # Checkout the code as the first step.
       - checkout
 
-      - run: ls
+      - run: cd ERC721/color-token/frontend && ls
       
       - restore_cache:
           keys:
