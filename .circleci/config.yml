@@ -17,6 +17,8 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
       - image: cimg/node:15.1
+
+    working_directory: ~/repo/ERC721/color-token/frontend
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
@@ -24,14 +26,19 @@ jobs:
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
-      - node/install-packages:
-          app-dir: ERC721/color-token/frontend
-          cache-path: node_modules
-          override-ci-command: npm i
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
       # - node/install-packages:
       #     pkg-manager: yarn 
-      - run: npm install
+      - run: npm i
+      
+      - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json "}}
 
       - run: npm run build
 
