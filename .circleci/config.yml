@@ -25,7 +25,7 @@ jobs:
       # Checkout the code as the first step.
       - checkout
 
-      - run: cd ~/blockchain-dapp-samples/ERC721/color-token/frontend && ls
+      - run: ls
       
       - restore_cache:
           keys:
