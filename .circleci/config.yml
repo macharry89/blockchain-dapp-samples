@@ -36,7 +36,6 @@ jobs:
       - run:
           name: Run tests
           command: |
-            cd /root/ERC721/color-token/frontend 
             npm install
             npm run build
 
