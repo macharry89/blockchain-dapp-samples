@@ -26,7 +26,7 @@ jobs:
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
       - node/install-packages:
-          app-dir: ~/ERC721/color-token/frontend
+          app-dir: ~/blockchain-dapp-samples/ERC721/color-token/frontend
           cache-path: node_modules
           override-ci-command: npm i
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
